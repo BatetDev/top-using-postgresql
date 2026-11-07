@@ -18,7 +18,11 @@ VALUES
 async function main() {
   console.log('seeding...');
   const client = new Client({
-    connectionString: `postgresql://franbtt:${process.env.DATABASE_PASSWORD}@localhost:5432/top_users`,
+    host: process.env.DATABASE_HOST,
+    user: process.env.DATABASE_USER,
+    database: process.env.DATABASE_NAME,
+    password: process.env.DATABASE_PASSWORD,
+    port: process.env.DATABASE_PORT,
   });
   await client.connect();
   await client.query(SQL);

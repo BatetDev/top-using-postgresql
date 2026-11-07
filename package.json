@@ -4,8 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "node --watch app.js"
+    "start": "node --env-file=.env app.js",
+    "dev": "node --watch --env-file=.env app.js",
+    "db:populate": "node --env-file=.env db/populatedb.js"
   },
   "repository": {
     "type": "git",
