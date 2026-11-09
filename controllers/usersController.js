@@ -8,8 +8,8 @@ async function getUsernames(req, res) {
   res.send('Usernames: ' + usernames.map((user) => user.username).join(', '));
 }
 
-async function createUsernameGet(req, res) {
-  // render the form
+function createUsernameGet(req, res) {
+  res.render('new', { title: 'New user' });
 }
 
 async function createUsernamePost(req, res) {
@@ -18,8 +18,19 @@ async function createUsernamePost(req, res) {
   res.redirect('/');
 }
 
+async function deleteAllPost(req, res) {
+  await db.deleteAllUsernames();
+  res.redirect('/');
+}
+
+function deleteAllGet(req, res) {
+  res.render('deleteAll', { title: 'Delete all usernames' });
+}
+
 module.exports = {
   getUsernames,
   createUsernameGet,
   createUsernamePost,
+  deleteAllGet,
+  deleteAllPost,
 };
